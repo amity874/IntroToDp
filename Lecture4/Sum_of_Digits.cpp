@@ -1,4 +1,8 @@
 #include<bits/stdc++.h>
+//#include<ext/pb_ds/assoc_container.hpp>
+//#include<ext/pb_ds/tree_policy.hpp>
+//#include <ext/pb_ds/trie_policy.hpp>
+//using namespace __gnu_pbds;
 using namespace std;
 #define ll 				long long int
 #define ld				long double
@@ -22,27 +26,45 @@ using namespace std;
 #define looprev(i,a,b) 	for(int i=(a);i>=(b);i--)
 #define iter(container, it) for(__typeof(container.begin()) it = container.begin(); it != container.end(); it++)
 #define log(args...) 	{ string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); stringstream _ss(_s); istream_iterator<string> _it(_ss); err(_it, args); }
+#define logarr(arr,a,b)	for(int z=(a);z<=(b);z++) cout<<(arr[z])<<" ";cout<<endl;	
 template <typename T> T gcd(T a, T b){if(a%b) return gcd(b,a%b);return b;}
 template <typename T> T lcm(T a, T b){return (a*(b/gcd(a,b)));}
+vs tokenizer(string str,char ch) {std::istringstream var((str)); vs v; string t; while(getline((var), t, (ch))) {v.pb(t);} return v;}
+ll pow_of_10(ll a){
+    ll result=1;
+  for(int i=1;i<=a;i++){
+      result*=10;
+  }
+  return result;
+}
+ll Sum_of_digits(ll num){
+    if(num/10==0){
+        return ((num)*(num+1))/2;
+    }
+    string s=to_string(num);
+    int n=s.size();
+    ll pow_1=pow_of_10(n-1);
+    int first=num/(pow_1);
+    ll result=0;
+    ll sum=pow_of_10(n-2)*45*(n-1);
+    for(int i=0;i<first;i++){
+        result=result+(i)*pow_1+sum;
+    }
+    ll res_of_number=num%(pow_1);
+    result+=first*(res_of_number+1);
+    result+=Sum_of_digits(res_of_number);
+    return result;
+}
 int main(int argc, char const *argv[]){
-int t;
-	cin>>t;
-	while(t--) {
-		ll n, k;
-		cin>>n>>k;
-		vi h(n);
-		loop(i, 0, n-1) cin>>h[i];
-		vi dp(n, inf);
-		// dp[i] -> min cost to reach from 0-i
-		dp[0] = 0;
-		loop(i, 1, n-1) {
-			loop(j, 1, k) {
-				if(i - j < 0) break;
-				dp[i] = min(dp[i], dp[i-j]+abs(h[i]-h[i-j]));
-			}
-		}
-		// logarr(dp, 0, n-1);
-		cout<<dp[n-1]<<endl;
-	}
-return 0;
+     ll a,b;
+    while(true){
+        cin>>a>>b;
+        if(a==-1 and b==-1){
+            break;
+        }
+        ll a1=Sum_of_digits(b);
+        ll a2=Sum_of_digits(a-1);
+        cout<<a1-a2<<"\n";
+    }
+    return 0;
 }
