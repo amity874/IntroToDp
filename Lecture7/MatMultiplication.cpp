@@ -30,6 +30,7 @@ ll matMulRecButtomUp(std::vector<ll>arr){
    for(int i=0;i<n;i++){
        dp[i][i]=0;
    }
+    // for(int i=0;i+len<=n;i++){
    for(int len=2;len<n;len++){
        for(int i=1;i<=(n-len);i++){
            int j=(len+i)-1;

@@ -3,6 +3,7 @@
 
 int main(int argc, char const *argv[])
 {
+    // tc->o(n^2)
      ll n,k;//n=>no of house,m=>color
     std::cin>>n>>k;
     ll arr[n][k];

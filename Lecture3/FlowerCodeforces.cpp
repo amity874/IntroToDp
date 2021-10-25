@@ -6,7 +6,7 @@
 using namespace std;
 int *CountWays(int k){
    int *dp=new int[100005]{0};
-    dp[0]=1;
+   dp[0]=1;
     for(int i=1;i<=100005;i++){
         if(i<k)dp[i]=dp[i-1];
         else{

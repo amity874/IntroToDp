@@ -23,7 +23,7 @@ using namespace std;
 #define logarr(arr,a,b)	for(int z=(a);z<=(b);z++) cout<<(arr[z])<<" ";cout<<endl;	
 int main(int argc, char const *argv[])
 {
-    std::vector<ll>arr={2,3,1,1,4};
+    std::vector<ll>arr={3,3,0,2,1,2,4,2,0,0};
    int n=arr.size();
        vector<ll>dp(n,INT_MAX);
        dp[0]=0;
